@@ -1,0 +1,54 @@
+//without canvas
+
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule],
+  templateUrl: './app.html',
+})
+export class AppComponent {
+
+  signupForm = new FormGroup({
+    fullName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    course: new FormControl('', [Validators.required]),
+    agree: new FormControl(false, [Validators.requiredTrue]),
+  });
+
+  submittedData: any = null;
+
+  successMessage: string = '';
+  errorMessage: string = '';
+
+  // Getters
+  get fullName() { return this.signupForm.controls.fullName; }
+  get email() { return this.signupForm.controls.email; }
+  get course() { return this.signupForm.controls.course; }
+  get agree() { return this.signupForm.controls.agree; }
+
+  submit(): void {
+    this.successMessage = '';
+    this.errorMessage = '';
+
+    this.signupForm.markAllAsTouched();
+
+    if (this.signupForm.invalid) {
+      this.errorMessage = 'Please fill out the form correctly.';
+      return;
+    }
+
+    this.submittedData = this.signupForm.value;
+    this.successMessage = 'Form submitted successfully!';
+
+    this.signupForm.reset({
+      fullName: '',
+      email: '',
+      course: '',
+      agree: false
+    });
+  }
+}
