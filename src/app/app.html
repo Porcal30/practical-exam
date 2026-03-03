@@ -1,0 +1,231 @@
+<div class="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-900">
+  <!-- HEADER -->
+  <header class="border-b bg-blue-200 backdrop-blur">
+    <div class="mx-auto max-w-5xl px-4 py-8">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight">Angular Study Page</h1>
+          <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">
+            HTML5 + Semantic Tags + Forms + Validation + Multimedia + Accessibility (Tailwind UI)
+          </p>
+        </div>
+      </div>
+
+      <nav class="mt-6 flex flex-wrap gap-2 text-sm" aria-label="Primary navigation">
+        <a
+          class="rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm transition hover:-translate-y-[1px] hover:bg-slate-50 hover:shadow focus:outline-none focus:ring-2 focus:ring-slate-300"
+          href="#about"
+        >
+          About
+        </a>
+        <a
+          class="rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm transition hover:-translate-y-[1px] hover:bg-slate-50 hover:shadow focus:outline-none focus:ring-2 focus:ring-slate-300"
+          href="#form"
+        >
+          Form
+        </a>
+        <a
+          class="rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm transition hover:-translate-y-[1px] hover:bg-slate-50 hover:shadow focus:outline-none focus:ring-2 focus:ring-slate-300"
+          href="#media"
+        >
+          Media
+        </a>
+        <a
+          class="rounded-full border border-slate-200 bg-white px-4 py-2 shadow-sm transition hover:-translate-y-[1px] hover:bg-slate-50 hover:shadow focus:outline-none focus:ring-2 focus:ring-slate-300"
+          href="#canvas"
+        >
+          Canvas
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-5xl px-4 py-10">
+    <!-- SEMANTIC SECTION -->
+    <section id="about" aria-labelledby="about-title" class="rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 id="about-title" class="text-lg font-semibold">Semantic Structure</h2>
+          <p class="mt-1 text-sm text-slate-600">
+            A quick refresher on semantic tags and why they matter.
+          </p>
+        </div>
+      </div>
+
+      <article aria-labelledby="article-1-title" class="mt-5 text-sm text-slate-700">
+        <h3 id="article-1-title" class="font-semibold text-slate-900">Why semantic tags?</h3>
+        <p class="mt-2 leading-relaxed">
+          Using
+          <code class="rounded-lg bg-slate-100 px-2 py-1 text-[12px]">header</code>,
+          <code class="rounded-lg bg-slate-100 px-2 py-1 text-[12px]">nav</code>,
+          <code class="rounded-lg bg-slate-100 px-2 py-1 text-[12px]">main</code>,
+          <code class="rounded-lg bg-slate-100 px-2 py-1 text-[12px]">section</code>,
+          <code class="rounded-lg bg-slate-100 px-2 py-1 text-[12px]">article</code>,
+          <code class="rounded-lg bg-slate-100 px-2 py-1 text-[12px]">footer</code>
+          improves page structure and accessibility.
+        </p>
+      </article>
+    </section>
+
+    <!-- FORM SECTION -->
+    <section id="form" aria-labelledby="form-title" class="mt-8 rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 id="form-title" class="text-lg font-semibold">Accessible Form</h2>
+          <p class="mt-1 text-sm text-slate-600">
+            Reactive Forms + simple submit feedback.
+          </p>
+        </div>
+      </div>
+
+      <form
+        class="mt-6 grid max-w-xl gap-4"
+        [formGroup]="signupForm"
+        (ngSubmit)="submit()"
+        novalidate
+      >
+        <!-- Full Name -->
+        <div>
+          <label class="block text-sm font-medium" for="fullName">Full name</label>
+          <input
+            id="fullName"
+            type="text"
+            formControlName="fullName"
+            autocomplete="name"
+            placeholder="e.g., Juan Dela Cruz"
+            class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm shadow-sm outline-none transition
+                   placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-100"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label class="block text-sm font-medium" for="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm shadow-sm outline-none transition
+                   placeholder:text-slate-400 focus:border-slate-400 focus:ring-4 focus:ring-slate-100"
+          />
+        </div>
+
+        <!-- IT Course -->
+        <div>
+          <label class="block text-sm font-medium" for="course">IT Course</label>
+          <select
+            id="course"
+            formControlName="course"
+            class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm shadow-sm outline-none transition
+                   focus:border-slate-400 focus:ring-4 focus:ring-slate-100"
+          >
+            <option value="" disabled>Select a course</option>
+            <option value="BSIT">BS Information Technology</option>
+            <option value="BSCS">BS Computer Science</option>
+            <option value="BSIS">BS Information Systems</option>
+            <option value="CyberSec">Cybersecurity</option>
+            <option value="DataSci">Data Science</option>
+          </select>
+        </div>
+
+        <!-- Agree -->
+        <div class="mt-1 flex items-start gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
+          <input
+            id="agree"
+            type="checkbox"
+            formControlName="agree"
+            class="mt-1 h-4 w-4 rounded border-slate-300"
+          />
+          <div>
+            <label class="text-sm font-medium" for="agree">I agree to the terms</label>
+            <p class="mt-1 text-xs text-slate-600">
+              By submitting, you confirm the details are correct.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <button
+            type="submit"
+            class="inline-flex items-center justify-center rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white shadow-sm
+                   transition hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-200"
+          >
+            Submit
+          </button>
+
+          <!-- ✅ SIMPLE MESSAGES -->
+          <p *ngIf="successMessage" class="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm text-emerald-800">
+            {{ successMessage }}
+          </p>
+
+          <p *ngIf="errorMessage" class="rounded-2xl border border-red-200 bg-red-50 px-4 py-2 text-sm text-red-800">
+            {{ errorMessage }}
+          </p>
+        </div>
+      </form>
+
+      <article *ngIf="submittedData" aria-live="polite" class="mt-6 rounded-2xl border bg-slate-50 p-4">
+        <h3 class="text-sm font-semibold text-slate-900">Submitted Data</h3>
+        <pre class="mt-2 overflow-auto text-xs text-slate-700">{{ submittedData | json }}</pre>
+      </article>
+    </section>
+
+    <!-- MEDIA SECTION -->
+    <section id="media" aria-labelledby="media-title" class="mt-8 rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 id="media-title" class="text-lg font-semibold">Multimedia</h2>
+          <p class="mt-1 text-sm text-slate-600">Audio + Video elements with helpful notes.</p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid gap-6 lg:grid-cols-2">
+        <article aria-labelledby="audio-title" class="rounded-3xl border bg-slate-50 p-5">
+          <h3 id="audio-title" class="text-sm font-semibold text-slate-900">Audio</h3>
+          <audio class="mt-3 w-full" controls>
+            <source src="assets/alarm.wav" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+        </article>
+
+        <article aria-labelledby="video-title" class="rounded-3xl border bg-slate-50 p-5">
+          <h3 id="video-title" class="text-sm font-semibold text-slate-900">Video</h3>
+          <video class="mt-3 w-full rounded-2xl border bg-white" controls>
+            <source src="assets/irithel savage moments.mp4" type="video/mp4" />
+            Your browser does not support the video element.
+          </video>
+        </article>
+      </div>
+    </section>
+
+    <!-- CANVAS SECTION -->
+    <section id="canvas" aria-labelledby="canvas-title" class="mt-8 rounded-3xl border bg-white p-6 shadow-sm sm:p-8">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <h2 id="canvas-title" class="text-lg font-semibold">Canvas</h2>
+          <p class="mt-1 text-sm text-slate-600">A simple drawing rendered after view init.</p>
+        </div>
+      </div>
+
+      <canvas
+        #myCanvas
+        width="560"
+        height="200"
+        class="mt-6 w-full rounded-3xl border border-slate-200 bg-white shadow-sm"
+        aria-label="Demo canvas drawing"
+        role="img"
+      ></canvas>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t bg-white">
+    <div class="mx-auto max-w-5xl px-4 py-8 text-center">
+      <small class="text-sm text-slate-600">
+        &copy; 2026 Angular Study Page
+      </small>
+    </div>
+  </footer>
+</div>

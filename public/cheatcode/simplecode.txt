@@ -1,0 +1,142 @@
+<div class="min-h-screen bg-slate-50 text-slate-900">
+  <!-- Header -->
+  <header class="bg-blue-200 border-b">
+    <div class="max-w-5xl mx-auto px-4 py-6">
+      <h1 class="text-2xl font-bold">Angular Study Page</h1>
+      <p class="text-sm text-slate-700 mt-1">
+        HTML5 + Forms + Multimedia (Tailwind)
+      </p>
+
+      <!-- Simple Nav -->
+      <nav class="mt-4 flex gap-4 text-sm">
+        <a class="hover:underline" href="#about">About</a>
+        <a class="hover:underline" href="#form">Form</a>
+        <a class="hover:underline" href="#media">Media</a>
+        <a class="hover:underline" href="#canvas">Canvas</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 py-6 space-y-6">
+    <!-- About -->
+    <section id="about" class="bg-white border rounded-lg p-4">
+      <h2 class="text-lg font-semibold">Semantic Structure</h2>
+      <p class="text-sm text-slate-700 mt-2">
+        Semantic tags like <code class="bg-slate-100 px-1 rounded">header</code>,
+        <code class="bg-slate-100 px-1 rounded">nav</code>,
+        <code class="bg-slate-100 px-1 rounded">main</code>,
+        <code class="bg-slate-100 px-1 rounded">section</code>,
+        <code class="bg-slate-100 px-1 rounded">article</code>,
+        <code class="bg-slate-100 px-1 rounded">footer</code>
+        help with structure and accessibility.
+      </p>
+    </section>
+
+    <!-- Form -->
+    <section id="form" class="bg-white border rounded-lg p-4">
+      <h2 class="text-lg font-semibold">Form</h2>
+      <p class="text-sm text-slate-700 mt-1">Fill out the form and submit.</p>
+
+      <form class="mt-4 space-y-4 max-w-md" [formGroup]="signupForm" (ngSubmit)="submit()" novalidate>
+        <!-- Full name -->
+        <div>
+          <label for="fullName" class="block text-sm font-medium">Full name</label>
+          <input
+            id="fullName"
+            type="text"
+            formControlName="fullName"
+            class="mt-1 w-full border rounded p-2"
+            placeholder="Juan Dela Cruz"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="mt-1 w-full border rounded p-2"
+            placeholder="you@example.com"
+          />
+        </div>
+
+        <!-- Course -->
+        <div>
+          <label for="course" class="block text-sm font-medium">IT Course</label>
+          <select
+            id="course"
+            formControlName="course"
+            class="mt-1 w-full border rounded p-2"
+          >
+            <option value="" disabled>Select a course</option>
+            <option value="BSIT">BS Information Technology</option>
+            <option value="BSCS">BS Computer Science</option>
+            <option value="BSIS">BS Information Systems</option>
+            <option value="CyberSec">Cybersecurity</option>
+            <option value="DataSci">Data Science</option>
+          </select>
+        </div>
+
+        <!-- Agree (remove this block if you don’t want checkbox) -->
+        <div class="flex items-center gap-2">
+          <input id="agree" type="checkbox" formControlName="agree" />
+          <label for="agree" class="text-sm">I agree</label>
+        </div>
+
+        <button type="submit" class="bg-slate-900 text-white px-4 py-2 rounded">
+          Submit
+        </button>
+
+        <!-- Messages -->
+        <p *ngIf="successMessage" class="text-green-700 text-sm">{{ successMessage }}</p>
+        <p *ngIf="errorMessage" class="text-red-700 text-sm">{{ errorMessage }}</p>
+      </form>
+
+      <div *ngIf="submittedData" class="mt-4 bg-slate-100 p-3 rounded">
+        <p class="font-semibold text-sm">Submitted Data:</p>
+        <pre class="text-xs">{{ submittedData | json }}</pre>
+      </div>
+    </section>
+
+    <!-- Media -->
+    <section id="media" class="bg-white border rounded-lg p-4">
+      <h2 class="text-lg font-semibold">Media</h2>
+
+      <div class="mt-4 space-y-6">
+        <div>
+          <h3 class="font-medium">Audio</h3>
+          <audio class="w-full mt-2" controls>
+            <source src="assets/alarm.wav" type="audio/mpeg" />
+          </audio>
+        </div>
+
+        <div>
+          <h3 class="font-medium">Video</h3>
+          <video class="w-full mt-2 border rounded" controls>
+            <source src="assets/irithel savage moments.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Canvas -->
+    <section id="canvas" class="bg-white border rounded-lg p-4">
+      <h2 class="text-lg font-semibold">Canvas</h2>
+      <canvas
+        #myCanvas
+        width="560"
+        height="200"
+        class="w-full mt-3 border rounded"
+      ></canvas>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t bg-white">
+    <div class="max-w-5xl mx-auto px-4 py-6 text-center">
+      <small class="text-sm text-slate-600">&copy; 2026 Angular Study Page</small>
+    </div>
+  </footer>
+</div>
