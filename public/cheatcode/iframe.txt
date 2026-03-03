@@ -1,0 +1,9 @@
+<div class="mt-2 aspect-video">
+  <iframe
+    class="w-full h-full rounded border"
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    title="YouTube video"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
